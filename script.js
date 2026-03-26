@@ -172,21 +172,32 @@ function loadVideos() {
     const homeVideosContainer = document.getElementById('home-videos');
     const allVideosContainer = document.getElementById('all-videos');
     
-    if (!homeVideosContainer || !allVideosContainer) return;
+    if (!homeVideosContainer && !allVideosContainer) return;
 
     // Показываем индикатор загрузки
-    homeVideosContainer.innerHTML = '<div class="video-loading"><i class="fas fa-spinner"></i><p>Загрузка видео...</p></div>';
-    allVideosContainer.innerHTML = '<div class="video-loading"><i class="fas fa-spinner"></i><p>Загрузка видео...</p></div>';
+    if (homeVideosContainer) {
+        homeVideosContainer.innerHTML = '<div class="video-loading"><i class="fas fa-spinner"></i><p>Загрузка видео...</p></div>';
+    }
+    if (allVideosContainer) {
+        allVideosContainer.innerHTML = '<div class="video-loading"><i class="fas fa-spinner"></i><p>Загрузка видео...</p></div>';
+    }
 
     // Загружаем первые 3 видео для главной
     const homeVideos = CONFIG.videos.slice(0, 3);
-    renderVideos(homeVideos, homeVideosContainer);
+    if (homeVideosContainer) {
+        renderVideos(homeVideos, homeVideosContainer);
+    }
 
     // Загружаем все видео для страницы видео
-    renderVideos(CONFIG.videos, allVideosContainer);
+    if (allVideosContainer) {
+        renderVideos(CONFIG.videos, allVideosContainer);
+    }
 
     // Обновляем статистику
-    document.getElementById('stat-videos').textContent = CONFIG.videos.length;
+    const statVideos = document.getElementById('stat-videos');
+    if (statVideos) {
+        statVideos.textContent = CONFIG.videos.length;
+    }
 }
 
 function renderVideos(videos, container) {
@@ -216,7 +227,7 @@ function renderVideos(videos, container) {
             .catch(error => {
                 console.error(`Ошибка загрузки видео ${video.title}:`, error);
                 videoCard.innerHTML = `
-                    <div class="video-container" style="display: flex; align-items: center; justify-content: center; color: white;">
+                    <div class="video-container" style="display: flex; align-items: center; justify-content: center; color: white; background: #000;">
                         <i class="fas fa-video-slash" style="font-size: 3rem;"></i>
                     </div>
                     <div class="video-info">
@@ -233,8 +244,13 @@ function renderVideos(videos, container) {
 
 // === СТАТИСТИКА ===
 function updateStats() {
-    document.getElementById('stat-sections').textContent = '5';
-    document.getElementById('stat-infographics').textContent = Object.keys(CONFIG.infographics).length;
+    const statSections = document.getElementById('stat-sections');
+    const statVideos = document.getElementById('stat-videos');
+    const statInfographics = document.getElementById('stat-infographics');
+    
+    if (statSections) statSections.textContent = '5';
+    if (statVideos) statVideos.textContent = CONFIG.videos.length;
+    if (statInfographics) statInfographics.textContent = Object.keys(CONFIG.infographics).length;
 }
 
 // === ГЛОБАЛЬНЫЕ ФУНКЦИИ ===
