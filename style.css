@@ -399,6 +399,26 @@ body {
     color: var(--warning-orange);
 }
 
+/* === ИНФОГРАФИКА === */
+.infographic-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.infographic-image {
+    max-width: 100%;
+    max-height: 600px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.infographic-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
 /* === ВИДЕО === */
 .video-grid {
     display: grid;
@@ -426,7 +446,8 @@ body {
     background: #000;
 }
 
-.video-container video {
+.video-container video,
+.video-container iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -601,6 +622,9 @@ body {
     .cards-grid,
     .video-grid {
         grid-template-columns: 1fr;
+    }
+    .infographic-image {
+        max-height: 400px;
     }
 }
 
