@@ -399,39 +399,6 @@ body {
     color: var(--warning-orange);
 }
 
-/* === ИНФОГРАФИКА === */
-.infographic-container {
-    margin: 2rem 0;
-    text-align: center;
-}
-
-.infographic-image {
-    max-width: 100%;
-    max-height: 600px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    display: none;
-}
-
-.infographic-image.loaded {
-    display: block;
-    margin: 0 auto;
-}
-
-.image-placeholder {
-    background: var(--gray-light);
-    padding: 3rem;
-    border: 2px dashed var(--border-color);
-    border-radius: 4px;
-    color: var(--text-light);
-}
-
-.image-placeholder i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: block;
-}
-
 /* === ВИДЕО === */
 .video-grid {
     display: grid;
