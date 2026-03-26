@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФинБезопасность | Официальный портал финансовой безопасности</title>
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+    <header class="header-top">
+        <div class="header-top-content">
+            <div class="header-title">
+                <i class="fas fa-shield-alt"></i> ФИНАНСОВАЯ БЕЗОПАСНОСТЬ | Официальный информационный портал
+            </div>
+            <div class="header-date" id="currentDate"></div>
+        </div>
+    </header>
+
+    <!-- НАВИГАЦИЯ -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-page="home">Главная</a></li>
+                <li><a href="#" class="nav-link" data-page="phishing">Фишинг</a></li>
+                <li><a href="#" class="nav-link" data-page="online">Онлайн-мошенники</a></li>
+                <li><a href="#" class="nav-link" data-page="phone">Телефонные мошенники</a></li>
+                <li><a href="#" class="nav-link" data-page="viruses">Вирусы</a></li>
+                <li><a href="#" class="nav-link" data-page="cards">Кража с карты</a></li>
+                <li><a href="#" class="nav-link" data-page="videos">Видеоматериалы</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="main-container">
+        <!-- БОКОВАЯ ПАНЕЛЬ -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Навигация</div>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="sidebar-link active" data-page="home">📚 Главная страница</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="phishing">🎣 Фишинг</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="online">💻 Онлайн-мошенничество</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="phone">📞 Телефонные мошенники</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="viruses">🦠 Вирусы и вредоносное ПО</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="cards">💳 Кража с карты</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="videos">📺 Видеоматериалы</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Информация</div>
+                <div class="sidebar-info">
+                    <p><strong>📊 Статистика:</strong></p>
+                    <p>• Разделов: <span id="stat-sections">5</span></p>
+                    <p>• Видеоматериалов: <span id="stat-videos">0</span></p>
+                    <p>• Инфографик: <span id="stat-infographics">0</span></p>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Контакты</div>
+                <div class="sidebar-info">
+                    <p><strong>📞 Горячая линия:</strong></p>
+                    <p>Банк России: 8-800-300-30-00</p>
+                    <p>МВД: 102</p>
+                    <p><strong>🌐 Официальные ресурсы:</strong></p>
+                    <p>cbr.ru | fincult.info</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- КОНТЕНТ -->
+        <main class="content">
+            <!-- ГЛАВНАЯ СТРАНИЦА -->
+            <section id="home" class="article-section active">
+                <div class="page-header">
+                    <div class="breadcrumb">Главная</div>
+                    <h1 class="page-title">Финансовая безопасность граждан</h1>
+                    <p class="page-subtitle">Официальный информационный портал по защите от финансового мошенничества</p>
+                </div>
+
+                <div class="article-content">
+                    <p class="intro-text">
+                        Данный портал создан с целью информирования граждан о современных способах финансового мошенничества 
+                        и методах защиты персональных данных и денежных средств. Материалы подготовлены на основе официальных 
+                        данных Банка России, Генеральной прокуратуры РФ и Министерства внутренних дел РФ.
+                    </p>
+
+                    <div class="info-box info-box-info">
+                        <strong><i class="fas fa-info-circle"></i> О портале</strong>
+                        <p>Портал содержит актуальную информацию о видах финансового мошенничества, способах защиты 
+                        и алгоритмах действий в случае противоправных действий со стороны злоумышленников.</p>
+                    </div>
+
+                    <h2>Основные разделы</h2>
+                    <div class="cards-grid">
+                        <div class="card" data-page="phishing">
+                            <div class="card-icon"><i class="fas fa-fish"></i></div>
+                            <div class="card-title">Фишинг</div>
+                            <div class="card-description">Защита от поддельных сайтов и кражи персональных данных через интернет</div>
+                            <span class="card-badge badge-high">Высокий риск</span>
+                        </div>
+
+                        <div class="card" data-page="online">
+                            <div class="card-icon"><i class="fas fa-laptop"></i></div>
+                            <div class="card-title">Онлайн-мошенничество</div>
+                            <div class="card-description">Обман в интернете: опросы, выплаты, инвестиционные проекты</div>
+                            <span class="card-badge badge-high">Высокий риск</span>
+                        </div>
+
+                        <div class="card" data-page="phone">
+                            <div class="card-icon"><i class="fas fa-phone"></i></div>
+                            <div class="card-title">Телефонные мошенники</div>
+                            <div class="card-description">Звонки от имени банков, полиции и государственных органов</div>
+                            <span class="card-badge badge-critical">Критический риск</span>
+                        </div>
+
+                        <div class="card" data-page="viruses">
+                            <div class="card-icon"><i class="fas fa-virus"></i></div>
+                            <div class="card-title">Вирусы и вредоносное ПО</div>
+                            <div class="card-description">Защита устройств от киберугроз и вредоносных программ</div>
+                            <span class="card-badge badge-critical">Критический риск</span>
+                        </div>
+
+                        <div class="card" data-page="cards">
+                            <div class="card-icon"><i class="fas fa-credit-card"></i></div>
+                            <div class="card-title">Кража с карты</div>
+                            <div class="card-description">Защита банковских карт и действий при краже денежных средств</div>
+                            <span class="card-badge badge-critical">Критический риск</span>
+                        </div>
+                    </div>
+
+                    <h2>Видеоматериалы</h2>
+                    <p>Обучающие видеоролики от официальных источников о различных видах финансового мошенничества</p>
+                    
+                    <div class="video-grid" id="home-videos">
+                        <!-- Видео загружаются через JS -->
+                    </div>
+
+                    <div class="info-box info-box-warning mt-2">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Важная информация</strong>
+                        <p>При обнаружении признаков финансового мошенничества немедленно обратитесь в правоохранительные 
+                        органы и в ваш банк для блокировки операций. Чем быстрее вы отреагируете, тем выше вероятность 
+                        возврата денежных средств.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ФИШИНГ -->
+            <section id="phishing" class="article-section">
+                <div class="page-header">
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Фишинг</div>
+                    <h1 class="page-title">Фишинг</h1>
+                    <p class="page-subtitle">Защита от поддельных сайтов и кражи персональных данных</p>
+                </div>
+
+                <div class="article-content">
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Уровень риска: Высокий</strong>
+                        <p>Фишинг — вид мошенничества, когда у человека крадут персональные данные или деньги 
+                        с помощью сайтов-подделок. Часто мошенники делают сайты, которые как две капли воды 
+                        похожи на сайты реальных организаций.</p>
+                    </div>
+
+                    <div class="infographic-container">
+                        <img id="phishing-image" src="" alt="Инфографика: Защита от фишинга" class="infographic-image">
+                        <div class="image-placeholder" id="phishing-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Изображение загружается...</p>
+                        </div>
+                    </div>
+
+                    <h2>Как можно оказаться на фишинговом сайте?</h2>
+                    <ul>
+                        <li>По ссылкам из интернета и электронной почты</li>
+                        <li>Из СМС и сообщений в соцсетях или мессенджерах</li>
+                        <li>Из рекламы и объявлений о лотереях, распродажах, компенсациях от государства</li>
+                        <li>Хакеры часто взламывают чужие аккаунты, и фишинговая ссылка может прийти даже от знакомых</li>
+                    </ul>
+
+                    <h2>Как распознать фишинговый сайт?</h2>
+                    <div class="info-box info-box-warning">
+                        <strong><i class="fas fa-search"></i> Признаки фишингового сайта:</strong>
+                        <ul>
+                            <li>Адрес отличается от настоящего лишь парой символов</li>
+                            <li>В адресной строке нет https и значка закрытого замка</li>
+                            <li>Дизайн сайта скопирован некачественно, в текстах есть ошибки</li>
+                            <li>У сайта мало страниц или даже одна — ввод данных карты</li>
+                        </ul>
+                    </div>
+
+                    <h2>Как уберечься от фишинга?</h2>
+                    <div class="info-box info-box-success">
+                        <strong><i class="fas fa-shield-alt"></i> Рекомендации по защите:</strong>
+                        <ol>
+                            <li>Установите антивирус и регулярно обновляйте его</li>
+                            <li>Сохраняйте в закладках адреса нужных сайтов</li>
+                            <li>Не переходите по подозрительным ссылкам</li>
+                            <li>Используйте отдельную карту для покупок в интернете и кладите на неё нужную сумму прямо перед оплатой</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ОНЛАЙН-МОШЕННИЧЕСТВО -->
+            <section id="online" class="article-section">
+                <div class="page-header">
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Онлайн-мошенничество</div>
+                    <h1 class="page-title">Онлайн-мошенничество</h1>
+                    <p class="page-subtitle">Защита от мошенников в интернете</p>
+                </div>
+
+                <div class="article-content">
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Уровень риска: Высокий</strong>
+                        <p>Чтобы добраться до ваших банковских счетов, мошенникам нужны ваши персональные данные 
+                        и реквизиты карты. Они используют различные схемы обмана в интернете.</p>
+                    </div>
+
+                    <div class="infographic-container">
+                        <img id="online-image" src="" alt="Инфографика: Онлайн-мошенники" class="infographic-image">
+                        <div class="image-placeholder" id="online-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Изображение загружается...</p>
+                        </div>
+                    </div>
+
+                    <h2>Какие схемы используют аферисты?</h2>
+                    
+                    <h3>Обещают золотые горы</h3>
+                    <p>Опросы за вознаграждение, социальные выплаты и сверхприбыльные инвестиционные проекты. 
+                    <strong>Гарантия быстрого обогащения — признак обмана.</strong></p>
+
+                    <h3>Заманивают на распродажи</h3>
+                    <p>Огромные скидки и низкие цены могут оказаться мошеннической уловкой.</p>
+
+                    <h3>Спекулируют на громких событиях</h3>
+                    <p>Например, объявляют сбор денег на разработку вакцины, обещают вернуть деньги за отменённые рейсы 
+                    или предлагают получить государственные дотации.</p>
+
+                    <h3>Маскируются</h3>
+                    <p>Разыгрывают роль продавцов и покупателей на популярных сайтах объявлений.</p>
+
+                    <h2>Как обезопасить свои деньги в интернете?</h2>
+                    <div class="info-box info-box-success">
+                        <strong><i class="fas fa-shield-alt"></i> Пять правил безопасности:</strong>
+                        <ol>
+                            <li>Установите антивирус и регулярно обновляйте его</li>
+                            <li>Заведите отдельную дебетовую карту для платежей в интернете и кладите на неё нужную сумму перед оплатой</li>
+                            <li>Всегда проверяйте адреса электронной почты и сайтов — они могут отличаться от официальных лишь парой символов</li>
+                            <li>Не переходите по ссылкам от незнакомцев — сразу удаляйте сомнительные сообщения</li>
+                            <li>Никому не сообщайте свои персональные данные</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ТЕЛЕФОННЫЕ МОШЕННИКИ -->
+            <section id="phone" class="article-section">
+                <div class="page-header">
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Телефонные мошенники</div>
+                    <h1 class="page-title">Телефонные мошенники</h1>
+                    <p class="page-subtitle">5 признаков обмана по телефону</p>
+                </div>
+
+                <div class="article-content">
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Уровень риска: Критический</strong>
+                        <p>Звонят от имени банка, полиции или прокуратуры, торопят и пугают. Используют сильные эмоции, 
+                        чтобы притупить бдительность.</p>
+                    </div>
+
+                    <div class="infographic-container">
+                        <img id="phone-image" src="" alt="Инфографика: Телефонные мошенники" class="infographic-image">
+                        <div class="image-placeholder" id="phone-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Изображение загружается...</p>
+                        </div>
+                    </div>
+
+                    <h2>5 признаков обмана</h2>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">№</th>
+                                <th>Признак</th>
+                                <th>Описание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>Звонят из банка, полиции или другой организации</td>
+                                <td>Аферисты могут представиться службой безопасности банка, налоговой, прокуратурой</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>Убедитесь, что это не мошенники!</td>
+                                <td>Любой неожиданный звонок, СМС или письмо — повод насторожиться</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>На вас давят</td>
+                                <td>Аферисты всегда торопят, чтобы у вас не было времени всё обдумать</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>Говорят о деньгах</td>
+                                <td>Предлагают спасти сбережения, получить компенсацию или вложиться в инвестиционный проект</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>Просят сообщить данные</td>
+                                <td>Злоумышленников интересуют реквизиты карты, пароли и коды из банковских уведомлений</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-circle"></i> ВАЖНО! Никогда никому не сообщайте:</strong>
+                        <ul>
+                            <li>Коды из СМС</li>
+                            <li>Трехзначный код на оборотной стороне карты (CVV/CVC)</li>
+                            <li>PIN-код</li>
+                            <li>Пароли/логины к банковскому приложению и онлайн-банку</li>
+                            <li>Кодовое слово</li>
+                            <li>Персональные данные</li>
+                        </ul>
+                        <p class="important-note">
+                            Сотрудники банков и полиции НИКОГДА не спрашивают реквизиты карты, пароли и коды из СМС
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ВИРУСЫ -->
+            <section id="viruses" class="article-section">
+                <div class="page-header">
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Вирусы и вредоносное ПО</div>
+                    <h1 class="page-title">Вирусы и вредоносное программное обеспечение</h1>
+                    <p class="page-subtitle">Защита устройств от киберугроз</p>
+                </div>
+
+                <div class="article-content">
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Уровень риска: Критический</strong>
+                        <p>Вирусы открывают удалённый доступ к вашему устройству, крадут логины и пароли от онлайн- 
+                        и мобильного банка, перехватывают секретные коды из сообщений. Заполучив эти данные, 
+                        киберпреступники могут похитить все деньги с ваших счетов.</p>
+                    </div>
+
+                    <div class="infographic-container">
+                        <img id="viruses-image" src="" alt="Инфографика: Вирусы" class="infographic-image">
+                        <div class="image-placeholder" id="viruses-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Изображение загружается...</p>
+                        </div>
+                    </div>
+
+                    <h2>Как понять, что устройство заражено?</h2>
+                    <ul>
+                        <li>Зависает, перезагружается или отключается</li>
+                        <li>Само завершает работу приложений</li>
+                        <li>Показывает всплывающие окна</li>
+                        <li>Теряет объём памяти</li>
+                    </ul>
+
+                    <h2>Что делать, если на устройстве вирус?</h2>
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Порядок действий:</strong>
+                        <ol>
+                            <li>Позвоните в банк и попросите заблокировать доступ к онлайн- и мобильному банку и все карты</li>
+                            <li>Обратитесь в сервисный центр, чтобы вылечить гаджет</li>
+                            <li>Перевыпустите карты, смените логин и пароль от онлайн-банка</li>
+                        </ol>
+                    </div>
+
+                    <h2>Как защитить устройство от вирусов?</h2>
+                    <div class="info-box info-box-success">
+                        <strong><i class="fas fa-shield-alt"></i> Рекомендации по защите:</strong>
+                        <ol>
+                            <li>Используйте антивирус и регулярно его обновляйте</li>
+                            <li>Не переходите по ссылкам от незнакомцев</li>
+                            <li>Скачивайте приложения только из проверенных источников</li>
+                            <li>Обновляйте операционную систему устройства</li>
+                            <li>Избегайте общедоступных Wi-Fi сетей</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- КРАЖА С КАРТЫ -->
+            <section id="cards" class="article-section">
+                <div class="page-header">
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Кража с карты</div>
+                    <h1 class="page-title">Кража с карты</h1>
+                    <p class="page-subtitle">Что делать, если с карты украли деньги</p>
+                </div>
+
+                <div class="article-content">
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Уровень риска: Критический</strong>
+                        <p>Мошенники крадут деньги с банковских карт различными способами. Важно знать, что делать, 
+                        если с карты украли деньги, и как обезопасить деньги на счетах.</p>
+                    </div>
+
+                    <div class="infographic-container">
+                        <img id="cards-image" src="" alt="Инфографика: Кража с карты" class="infographic-image">
+                        <div class="image-placeholder" id="cards-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Изображение загружается...</p>
+                        </div>
+                    </div>
+
+                    <h2>Что делать, если с карты украли деньги?</h2>
+                    
+                    <div class="info-box info-box-danger">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Порядок действий:</strong>
+                        
+                        <h3 class="action-step">1. Заблокировать карту</h3>
+                        <ul>
+                            <li>По номеру телефона банка на банковской карте или на официальном сайте</li>
+                            <li>Через мобильное приложение</li>
+                            <li>Через личный кабинет на официальном сайте банка</li>
+                            <li>В отделении банка</li>
+                        </ul>
+
+                        <h3 class="action-step">2. Написать заявление о несогласии с операцией</h3>
+                        <p>Заявление должно быть написано:</p>
+                        <ul>
+                            <li>В течение суток после сообщения о списании денег</li>
+                            <li>На месте в отделении банка</li>
+                        </ul>
+
+                        <h3 class="action-step">3. Обратиться в полицию</h3>
+                        <p>Чем больше людей подадут заявления, тем выше вероятность, что преступников поймают.</p>
+                    </div>
+
+                    <h2>Как обезопасить деньги на счетах?</h2>
+                    <div class="info-box info-box-success">
+                        <strong><i class="fas fa-shield-alt"></i> Никому не сообщайте:</strong>
+                        <ul>
+                            <li>Срок действия карты и трехзначный код на её оборотной стороне (CVV/CVC)</li>
+                            <li>Пароли и коды из уведомлений</li>
+                            <li>Логин и пароль от онлайн-банка</li>
+                            <li>Не публикуйте персональные данные в открытом доступе</li>
+                            <li>Установите антивирусы на все устройства</li>
+                            <li>Кодовое слово — называйте только сотруднику банка</li>
+                        </ul>
+                        <p class="warning-note">
+                            Банк не компенсирует потери, если вы нарушили правила безопасного использования карты
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ВИДЕОМАТЕРИАЛЫ -->
+            <section id="videos" class="article-section">
+                <div class="page-header">
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Видеоматериалы</div>
+                    <h1 class="page-title">Видеоматериалы</h1>
+                    <p class="page-subtitle">Обучающие видеоролики о финансовом мошенничестве</p>
+                </div>
+
+                <div class="article-content">
+                    <p>Официальные видеоматериалы от Банка России, Генеральной прокуратуры РФ и МВД России 
+                    о различных видах финансового мошенничества и способах защиты.</p>
+
+                    <div class="video-grid" id="all-videos">
+                        <!-- Видео загружаются через JS из Firebase -->
+                    </div>
+
+                    <div class="info-box info-box-info mt-2">
+                        <strong><i class="fas fa-info-circle"></i> Примечание</strong>
+                        <p>Видеоматериалы хранятся в Firebase Storage и загружаются динамически. 
+                        Для доступа к видео требуется подключение к интернету.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>О портале</h4>
+                <p>Официальный информационный портал по финансовой безопасности граждан. 
+                Материалы подготовлены на основе данных официальных источников.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Официальные ресурсы</h4>
+                <p><a href="https://cbr.ru" target="_blank">Банк России (cbr.ru)</a></p>
+                <p><a href="https://fincult.info" target="_blank">Финансовая культура (fincult.info)</a></p>
+                <p><a href="https://мвд.рф" target="_blank">МВД России (мвд.рф)</a></p>
+                <p><a href="https://генпрокуратура.рф" target="_blank">Генеральная прокуратура</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Контакты экстренных служб</h4>
+                <p><i class="fas fa-phone"></i> Банк России: 8-800-300-30-00</p>
+                <p><i class="fas fa-phone"></i> Полиция: 102</p>
+                <p><i class="fas fa-phone"></i> Единый номер: 112</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Информация</h4>
+                <p>Портал носит информационный характер и не является официальным сайтом государственных органов.</p>
+                <p>При обнаружении мошенничества обращайтесь в правоохранительные органы.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 ФинБезопасность | Информационный портал финансовой безопасности</p>
+            <p>Материалы портала предназначены для ознакомления</p>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    
+    <!-- Конфигурация Firebase -->
+    <script src="js/firebase-config.js"></script>
+    
+    <!-- Основной скрипт -->
+    <script src="js/script.js"></script>
+</body>
+</html>
