@@ -1,11 +1,11 @@
 // === КОНФИГУРАЦИЯ ===
 const CONFIG = {
     infographics: {
-        phishing: 'infographics/phishing.png',
-        online: 'infographics/online_scams.png',
-        phone: 'infographics/phone_scams.png',
-        viruses: 'infographics/viruses.png',
-        cards: 'infographics/card_theft.png'
+        phishing: 'images/phishing.jpg',
+        online: 'images/online_scams.jpg',
+        phone: 'images/phone_scams.jpg',
+        viruses: 'images/viruses.jpg',
+        cards: 'images/card_theft.jpg'
     },
     videos: [
         {
@@ -148,21 +148,23 @@ function loadInfographics() {
         
         if (img && placeholder) {
             // Получаем URL из Firebase Storage
-            storage.ref(path).getDownloadURL()
-                .then(url => {
-                    img.src = url;
-                    img.onload = () => {
-                        img.classList.add('loaded');
-                        placeholder.style.display = 'none';
-                    };
-                })
-                .catch(error => {
-                    console.error(`Ошибка загрузки ${key}:`, error);
-                    placeholder.innerHTML = `
-                        <i class="fas fa-exclamation-circle"></i>
-                        <p>Изображение недоступно</p>
-                    `;
-                });
+            if (typeof storage !== 'undefined') {
+                storage.ref(path).getDownloadURL()
+                    .then(url => {
+                        img.src = url;
+                        img.onload = () => {
+                            img.classList.add('loaded');
+                            placeholder.style.display = 'none';
+                        };
+                    })
+                    .catch(error => {
+                        console.error(`Ошибка загрузки ${key}:`, error);
+                        placeholder.innerHTML = `
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Изображение недоступно</p>
+                        `;
+                    });
+            }
         }
     }
 }
@@ -208,35 +210,37 @@ function renderVideos(videos, container) {
         videoCard.className = 'video-card';
         
         // Получаем URL видео из Firebase Storage
-        storage.ref(video.storagePath).getDownloadURL()
-            .then(url => {
-                videoCard.innerHTML = `
-                    <div class="video-container">
-                        <video controls preload="metadata">
-                            <source src="${url}" type="video/mp4">
-                            Ваш браузер не поддерживает видео
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-category">${video.category}</span>
-                        <h3 class="video-title">${video.title}</h3>
-                        <p class="video-description">${video.description}</p>
-                    </div>
-                `;
-            })
-            .catch(error => {
-                console.error(`Ошибка загрузки видео ${video.title}:`, error);
-                videoCard.innerHTML = `
-                    <div class="video-container" style="display: flex; align-items: center; justify-content: center; color: white; background: #000;">
-                        <i class="fas fa-video-slash" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-category">${video.category}</span>
-                        <h3 class="video-title">${video.title}</h3>
-                        <p class="video-description">Видео недоступно</p>
-                    </div>
-                `;
-            });
+        if (typeof storage !== 'undefined') {
+            storage.ref(video.storagePath).getDownloadURL()
+                .then(url => {
+                    videoCard.innerHTML = `
+                        <div class="video-container">
+                            <video controls preload="metadata">
+                                <source src="${url}" type="video/mp4">
+                                Ваш браузер не поддерживает видео
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <span class="video-category">${video.category}</span>
+                            <h3 class="video-title">${video.title}</h3>
+                            <p class="video-description">${video.description}</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error(`Ошибка загрузки видео ${video.title}:`, error);
+                    videoCard.innerHTML = `
+                        <div class="video-container" style="display: flex; align-items: center; justify-content: center; color: white; background: #000;">
+                            <i class="fas fa-video-slash" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="video-info">
+                            <span class="video-category">${video.category}</span>
+                            <h3 class="video-title">${video.title}</h3>
+                            <p class="video-description">Видео недоступно</p>
+                        </div>
+                    `;
+                });
+        }
         
         container.appendChild(videoCard);
     });
