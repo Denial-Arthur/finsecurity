@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ФинБезопасность | Официальный портал финансовой безопасности</title>
-    
-    <!-- Стили -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Иконки -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
     <header class="header-top">
         <div class="header-top-content">
             <div class="header-title">
@@ -22,7 +17,6 @@
         </div>
     </header>
 
-    <!-- НАВИГАЦИЯ -->
     <nav class="main-nav">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -37,9 +31,7 @@
         </div>
     </nav>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <div class="main-container">
-        <!-- БОКОВАЯ ПАНЕЛЬ -->
         <aside class="sidebar">
             <div class="sidebar-section">
                 <div class="sidebar-title">Навигация</div>
@@ -59,8 +51,8 @@
                 <div class="sidebar-info">
                     <p><strong>📊 Статистика:</strong></p>
                     <p>• Разделов: <span id="stat-sections">5</span></p>
-                    <p>• Видеоматериалов: <span id="stat-videos">0</span></p>
-                    <p>• Инфографик: <span id="stat-infographics">0</span></p>
+                    <p>• Видеоматериалов: <span id="stat-videos">5</span></p>
+                    <p>• Инфографик: <span id="stat-infographics">5</span></p>
                 </div>
             </div>
 
@@ -76,9 +68,8 @@
             </div>
         </aside>
 
-        <!-- КОНТЕНТ -->
         <main class="content">
-            <!-- ГЛАВНАЯ СТРАНИЦА -->
+            <!-- ГЛАВНАЯ -->
             <section id="home" class="article-section active">
                 <div class="page-header">
                     <div class="breadcrumb">Главная</div>
@@ -101,47 +92,40 @@
 
                     <h2>Основные разделы</h2>
                     <div class="cards-grid">
-                        <div class="card" data-page="phishing">
+                        <div class="card" onclick="showPage('phishing')">
                             <div class="card-icon"><i class="fas fa-fish"></i></div>
                             <div class="card-title">Фишинг</div>
                             <div class="card-description">Защита от поддельных сайтов и кражи персональных данных через интернет</div>
                             <span class="card-badge badge-high">Высокий риск</span>
                         </div>
 
-                        <div class="card" data-page="online">
+                        <div class="card" onclick="showPage('online')">
                             <div class="card-icon"><i class="fas fa-laptop"></i></div>
                             <div class="card-title">Онлайн-мошенничество</div>
                             <div class="card-description">Обман в интернете: опросы, выплаты, инвестиционные проекты</div>
                             <span class="card-badge badge-high">Высокий риск</span>
                         </div>
 
-                        <div class="card" data-page="phone">
+                        <div class="card" onclick="showPage('phone')">
                             <div class="card-icon"><i class="fas fa-phone"></i></div>
                             <div class="card-title">Телефонные мошенники</div>
                             <div class="card-description">Звонки от имени банков, полиции и государственных органов</div>
                             <span class="card-badge badge-critical">Критический риск</span>
                         </div>
 
-                        <div class="card" data-page="viruses">
+                        <div class="card" onclick="showPage('viruses')">
                             <div class="card-icon"><i class="fas fa-virus"></i></div>
                             <div class="card-title">Вирусы и вредоносное ПО</div>
                             <div class="card-description">Защита устройств от киберугроз и вредоносных программ</div>
                             <span class="card-badge badge-critical">Критический риск</span>
                         </div>
 
-                        <div class="card" data-page="cards">
+                        <div class="card" onclick="showPage('cards')">
                             <div class="card-icon"><i class="fas fa-credit-card"></i></div>
                             <div class="card-title">Кража с карты</div>
                             <div class="card-description">Защита банковских карт и действий при краже денежных средств</div>
                             <span class="card-badge badge-critical">Критический риск</span>
                         </div>
-                    </div>
-
-                    <h2>Видеоматериалы</h2>
-                    <p>Обучающие видеоролики от официальных источников о различных видах финансового мошенничества</p>
-                    
-                    <div class="video-grid" id="home-videos">
-                        <!-- Видео загружаются через JS -->
                     </div>
 
                     <div class="info-box info-box-warning mt-2">
@@ -167,14 +151,6 @@
                         <p>Фишинг — вид мошенничества, когда у человека крадут персональные данные или деньги 
                         с помощью сайтов-подделок. Часто мошенники делают сайты, которые как две капли воды 
                         похожи на сайты реальных организаций.</p>
-                    </div>
-
-                    <div class="infographic-container">
-                        <img id="phishing-image" src="" alt="Инфографика: Защита от фишинга" class="infographic-image">
-                        <div class="image-placeholder" id="phishing-placeholder">
-                            <i class="fas fa-image"></i>
-                            <p>Изображение загружается...</p>
-                        </div>
                     </div>
 
                     <h2>Как можно оказаться на фишинговом сайте?</h2>
@@ -224,14 +200,6 @@
                         и реквизиты карты. Они используют различные схемы обмана в интернете.</p>
                     </div>
 
-                    <div class="infographic-container">
-                        <img id="online-image" src="" alt="Инфографика: Онлайн-мошенники" class="infographic-image">
-                        <div class="image-placeholder" id="online-placeholder">
-                            <i class="fas fa-image"></i>
-                            <p>Изображение загружается...</p>
-                        </div>
-                    </div>
-
                     <h2>Какие схемы используют аферисты?</h2>
                     
                     <h3>Обещают золотые горы</h3>
@@ -277,14 +245,6 @@
                         чтобы притупить бдительность.</p>
                     </div>
 
-                    <div class="infographic-container">
-                        <img id="phone-image" src="" alt="Инфографика: Телефонные мошенники" class="infographic-image">
-                        <div class="image-placeholder" id="phone-placeholder">
-                            <i class="fas fa-image"></i>
-                            <p>Изображение загружается...</p>
-                        </div>
-                    </div>
-
                     <h2>5 признаков обмана</h2>
                     
                     <table class="data-table">
@@ -314,7 +274,7 @@
                             <tr>
                                 <td><strong>4</strong></td>
                                 <td>Говорят о деньгах</td>
-                                <td>Предлагают спасти сбережения, получить компенсацию или вложиться в инвестиционный проект</td>
+                                <td>Предлагают спасти сбережения, получить компенсацию или вложиться в инвестиционный проект. Радуют внезапной выгодой или пугают</td>
                             </tr>
                             <tr>
                                 <td><strong>5</strong></td>
@@ -357,14 +317,6 @@
                         киберпреступники могут похитить все деньги с ваших счетов.</p>
                     </div>
 
-                    <div class="infographic-container">
-                        <img id="viruses-image" src="" alt="Инфографика: Вирусы" class="infographic-image">
-                        <div class="image-placeholder" id="viruses-placeholder">
-                            <i class="fas fa-image"></i>
-                            <p>Изображение загружается...</p>
-                        </div>
-                    </div>
-
                     <h2>Как понять, что устройство заражено?</h2>
                     <ul>
                         <li>Зависает, перезагружается или отключается</li>
@@ -377,9 +329,9 @@
                     <div class="info-box info-box-danger">
                         <strong><i class="fas fa-exclamation-triangle"></i> Порядок действий:</strong>
                         <ol>
-                            <li>Позвоните в банк и попросите заблокировать доступ к онлайн- и мобильному банку и все карты</li>
+                            <li>Позвоните в банк и попросите заблокировать доступ к онлайн- и мобильному банку и все карты, которые использовали на устройстве</li>
                             <li>Обратитесь в сервисный центр, чтобы вылечить гаджет</li>
-                            <li>Перевыпустите карты, смените логин и пароль от онлайн-банка</li>
+                            <li>Перевыпустите карты, смените логин и пароль от онлайн-банка и заново установите банковское приложение</li>
                         </ol>
                     </div>
 
@@ -388,7 +340,7 @@
                         <strong><i class="fas fa-shield-alt"></i> Рекомендации по защите:</strong>
                         <ol>
                             <li>Используйте антивирус и регулярно его обновляйте</li>
-                            <li>Не переходите по ссылкам от незнакомцев</li>
+                            <li>Не переходите по ссылкам от незнакомцев, не устанавливайте программы по их просьбе и не используйте чужие флешки</li>
                             <li>Скачивайте приложения только из проверенных источников</li>
                             <li>Обновляйте операционную систему устройства</li>
                             <li>Избегайте общедоступных Wi-Fi сетей</li>
@@ -410,14 +362,6 @@
                         <strong><i class="fas fa-exclamation-triangle"></i> Уровень риска: Критический</strong>
                         <p>Мошенники крадут деньги с банковских карт различными способами. Важно знать, что делать, 
                         если с карты украли деньги, и как обезопасить деньги на счетах.</p>
-                    </div>
-
-                    <div class="infographic-container">
-                        <img id="cards-image" src="" alt="Инфографика: Кража с карты" class="infographic-image">
-                        <div class="image-placeholder" id="cards-placeholder">
-                            <i class="fas fa-image"></i>
-                            <p>Изображение загружается...</p>
-                        </div>
                     </div>
 
                     <h2>Что делать, если с карты украли деньги?</h2>
@@ -453,7 +397,7 @@
                             <li>Логин и пароль от онлайн-банка</li>
                             <li>Не публикуйте персональные данные в открытом доступе</li>
                             <li>Установите антивирусы на все устройства</li>
-                            <li>Кодовое слово — называйте только сотруднику банка</li>
+                            <li>Кодовое слово — называйте только сотруднику банка, когда сами звоните на горячую линию</li>
                         </ul>
                         <p class="warning-note">
                             Банк не компенсирует потери, если вы нарушили правила безопасного использования карты
@@ -474,21 +418,98 @@
                     <p>Официальные видеоматериалы от Банка России, Генеральной прокуратуры РФ и МВД России 
                     о различных видах финансового мошенничества и способах защиты.</p>
 
-                    <div class="video-grid" id="all-videos">
-                        <!-- Видео загружаются через JS из Firebase -->
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-container">
+                                <video controls poster="assets/videos/investment_poster.jpg">
+                                    <source src="assets/videos/investment_scam.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-category">Финансовые пирамиды</span>
+                                <h3 class="video-title">Инвестиционное мошенничество</h3>
+                                <p class="video-description">
+                                    Предлагают вложить деньги с обещанием дохода от 70%? Проверьте лицензию на cbr.ru
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="video-card">
+                            <div class="video-container">
+                                <video controls poster="assets/videos/creditors_poster.jpg">
+                                    <source src="assets/videos/illegal_creditors.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-category">Кредитное мошенничество</span>
+                                <h3 class="video-title">Нелегальные кредиторы</h3>
+                                <p class="video-description">
+                                    Остерегайтесь нелегальных кредиторов! Проверяйте лицензию!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="video-card">
+                            <div class="video-container">
+                                <video controls poster="assets/videos/elderly_poster.jpg">
+                                    <source src="assets/videos/elderly_scam.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-category">Социальная защита</span>
+                                <h3 class="video-title">Мошенничество против пенсионеров</h3>
+                                <p class="video-description">
+                                    Помогайте пенсионерам принимать правильные финансовые решения
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="video-card">
+                            <div class="video-container">
+                                <video controls poster="assets/videos/pincode_poster.jpg">
+                                    <source src="assets/videos/pin_code.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-category">Банковские карты</span>
+                                <h3 class="video-title">Безопасность ПИН-кода</h3>
+                                <p class="video-description">
+                                    Не храните пин-код вместе с картой
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="video-card">
+                            <div class="video-container">
+                                <video controls poster="assets/videos/profit_poster.jpg">
+                                    <source src="assets/videos/easy_profit.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-category">Финансовые пирамиды</span>
+                                <h3 class="video-title">Лёгкая прибыль</h3>
+                                <p class="video-description">
+                                    Гарантия сверхдохода — признак мошенничества
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="info-box info-box-info mt-2">
                         <strong><i class="fas fa-info-circle"></i> Примечание</strong>
-                        <p>Видеоматериалы хранятся в Firebase Storage и загружаются динамически. 
-                        Для доступа к видео требуется подключение к интернету.</p>
+                        <p>Видеофайлы должны быть размещены в папке <code>assets/videos/</code> с соответствующими именами. 
+                        Для оптимального отображения рекомендуется добавить постеры (изображения-превью) для каждого видео.</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- ПОДВАЛ -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -521,19 +542,14 @@
 
         <div class="footer-bottom">
             <p>© 2024 ФинБезопасность | Информационный портал финансовой безопасности</p>
-            <p>Материалы портала предназначены для ознакомления</p>
+            <p>Материалы портала предназначены для ознакомления и не заменяют официальную консультацию специалистов</p>
         </div>
     </footer>
 
-    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-    
-    <!-- Конфигурация Firebase -->
-    <script src="js/firebase-config.js"></script>
-    
-    <!-- Основной скрипт -->
-    <script src="js/script.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
