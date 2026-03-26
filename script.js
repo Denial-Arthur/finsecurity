@@ -1,12 +1,12 @@
 // === КОНФИГУРАЦИЯ ===
 const CONFIG = {
     infographics: {
-        phishing: 'images/phishing.jpg',
-        online: 'images/online_scams.jpg',
-        phone: 'images/phone_scams.jpg',
-        viruses: 'images/viruses.jpg',
-        cards: 'images/card_theft.jpg'
-    },
+    phishing: 'images/phishing.jpg.jpg',
+    online: 'images/online_scams.jpg.jpg',
+    phone: 'images/phone_scams.jpg.jpg',
+    viruses: 'images/viruses.jpg.jpg',
+    cards: 'images/card_theft.jpg.jpg'
+},
     videos: [
         {
             id: 1,
