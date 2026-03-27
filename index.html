@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ФинБезопасность | Официальный портал финансовой безопасности</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -59,10 +60,10 @@
                 <div class="sidebar-title">Контакты</div>
                 <div class="sidebar-info">
                     <p><strong>📞 Горячая линия:</strong></p>
-                    <p>Банк России: 8-800-300-30-00</p>
-                    <p>МВД: 102</p>
+                    <p>Банк России: <a href="tel:88003003000">8-800-300-30-00</a></p>
+                    <p>МВД: <a href="tel:102">102</a></p>
                     <p><strong>🌐 Официальные ресурсы:</strong></p>
-                    <p>cbr.ru | fincult.info</p>
+                    <p><a href="https://cbr.ru" target="_blank">cbr.ru</a> | <a href="https://fincult.info" target="_blank">fincult.info</a></p>
                 </div>
             </div>
         </aside>
@@ -91,35 +92,35 @@
 
                     <h2>Основные разделы</h2>
                     <div class="cards-grid">
-                        <div class="card" onclick="showPage('phishing')">
+                        <div class="card" data-page="phishing" onclick="showPage('phishing')">
                             <div class="card-icon"><i class="fas fa-fish"></i></div>
                             <div class="card-title">Фишинг</div>
                             <div class="card-description">Защита от поддельных сайтов и кражи персональных данных через интернет</div>
                             <span class="card-badge badge-high">Высокий риск</span>
                         </div>
 
-                        <div class="card" onclick="showPage('online')">
+                        <div class="card" data-page="online" onclick="showPage('online')">
                             <div class="card-icon"><i class="fas fa-laptop"></i></div>
                             <div class="card-title">Онлайн-мошенничество</div>
                             <div class="card-description">Обман в интернете: опросы, выплаты, инвестиционные проекты</div>
                             <span class="card-badge badge-high">Высокий риск</span>
                         </div>
 
-                        <div class="card" onclick="showPage('phone')">
+                        <div class="card" data-page="phone" onclick="showPage('phone')">
                             <div class="card-icon"><i class="fas fa-phone"></i></div>
                             <div class="card-title">Телефонные мошенники</div>
                             <div class="card-description">Звонки от имени банков, полиции и государственных органов</div>
                             <span class="card-badge badge-critical">Критический риск</span>
                         </div>
 
-                        <div class="card" onclick="showPage('viruses')">
+                        <div class="card" data-page="viruses" onclick="showPage('viruses')">
                             <div class="card-icon"><i class="fas fa-virus"></i></div>
                             <div class="card-title">Вирусы и вредоносное ПО</div>
                             <div class="card-description">Защита устройств от киберугроз и вредоносных программ</div>
                             <span class="card-badge badge-critical">Критический риск</span>
                         </div>
 
-                        <div class="card" onclick="showPage('cards')">
+                        <div class="card" data-page="cards" onclick="showPage('cards')">
                             <div class="card-icon"><i class="fas fa-credit-card"></i></div>
                             <div class="card-title">Кража с карты</div>
                             <div class="card-description">Защита банковских карт и действий при краже денежных средств</div>
