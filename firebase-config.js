@@ -1,12 +1,11 @@
 // Firebase конфигурация
-// ЗАМЕНИТЕ НА ВАШИ ДАННЫЕ ИЗ FIREBASE CONSOLE
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "your-project.firebaseapp.com",
-    projectId: "your-project",
-    storageBucket: "your-project.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyCGXHBLs3Sxx82JH7tz6wChhUbtww3icY",
+    authDomain: "finsecurity-558cc.firebaseapp.com",
+    projectId: "finsecurity-558cc",
+    storageBucket: "finsecurity-558cc.appspot.com",
+    messagingSenderId: "32273200562",
+    appId: "1:32273200562:web:484be393f5607e4877760ab"
 };
 
 // Инициализация Firebase
