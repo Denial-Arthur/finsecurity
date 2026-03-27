@@ -1,12 +1,12 @@
 // === КОНФИГУРАЦИЯ ===
 const CONFIG = {
     infographics: {
-    phishing: 'images/phishing.jpg.jpg',
-    online: 'images/online_scams.jpg.jpg',
-    phone: 'images/phone_scams.jpg.jpg',
-    viruses: 'images/viruses.jpg.jpg',
-    cards: 'images/card_theft.jpg.jpg'
-},
+        phishing: 'images/phishing.jpg.jpg',
+        online: 'images/online_scams.jpg.jpg',
+        phone: 'images/phone_scams.jpg.jpg',
+        viruses: 'images/viruses.jpg.jpg',
+        cards: 'images/card_theft.jpg.jpg'
+    },
     videos: [
         {
             id: 1,
@@ -49,11 +49,14 @@ const CONFIG = {
 // === ИНИЦИАЛИЗАЦИЯ ===
 document.addEventListener('DOMContentLoaded', function() {
     // Установка текущей даты
-    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('ru-RU', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    const dateElement = document.getElementById('currentDate');
+    if (dateElement) {
+        dateElement.textContent = new Date().toLocaleDateString('ru-RU', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
 
     // Инициализация навигации
     initNavigation();
