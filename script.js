@@ -1,264 +1,260 @@
-// === КОНФИГУРАЦИЯ ===
-const CONFIG = {
-    infographics: {
-        phishing: 'images/phishing.jpg.jpg',
-        online: 'images/online_scams.jpg.jpg',
-        phone: 'images/phone_scams.jpg.jpg',
-        viruses: 'images/viruses.jpg.jpg',
-        cards: 'images/card_theft.jpg.jpg'
-    },
-    videos: [
-        {
-            id: 1,
-            title: 'Инвестиционное мошенничество',
-            category: 'Финансовые пирамиды',
-            description: 'Предлагают доход от 70%? Проверьте лицензию на cbr.ru',
-            storagePath: 'videos/investment_scam.mp4'
-        },
-        {
-            id: 2,
-            title: 'Нелегальные кредиторы',
-            category: 'Кредитное мошенничество',
-            description: 'Остерегайтесь нелегальных кредиторов! Проверяйте лицензию!',
-            storagePath: 'videos/illegal_creditors.mp4'
-        },
-        {
-            id: 3,
-            title: 'Мошенничество против пенсионеров',
-            category: 'Социальная защита',
-            description: 'Помогайте пенсионерам принимать правильные финансовые решения',
-            storagePath: 'videos/elderly_scam.mp4'
-        },
-        {
-            id: 4,
-            title: 'Безопасность ПИН-кода',
-            category: 'Банковские карты',
-            description: 'Не храните пин-код вместе с картой',
-            storagePath: 'videos/pin_code.mp4'
-        },
-        {
-            id: 5,
-            title: 'Лёгкая прибыль',
-            category: 'Финансовые пирамиды',
-            description: 'Гарантия сверхдохода — признак мошенничества',
-            storagePath: 'videos/easy_profit.mp4'
-        }
-    ]
-};
+// === АВТОРИЗАЦИЯ ЧЕРЕЗ FIREBASE ===
 
-// === ИНИЦИАЛИЗАЦИЯ ===
-document.addEventListener('DOMContentLoaded', function() {
-    // Установка текущей даты
-    const dateElement = document.getElementById('currentDate');
-    if (dateElement) {
-        dateElement.textContent = new Date().toLocaleDateString('ru-RU', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+// Проверка состояния авторизации
+auth.onAuthStateChanged(user => {
+    if (user) {
+        console.log('✅ Пользователь авторизован:', user.email);
+        updateUserInterface(user);
+    } else {
+        console.log('❌ Пользователь не авторизован');
+        updateUserInterface(null);
     }
-
-    // Инициализация навигации
-    initNavigation();
-
-    // Загрузка инфографики
-    loadInfographics();
-
-    // Загрузка видео
-    loadVideos();
-
-    // Обновление статистики
-    updateStats();
 });
 
-// === НАВИГАЦИЯ ===
-function initNavigation() {
-    // Обработка кликов по основной навигации
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.dataset.page;
-            showPage(pageId);
-        });
-    });
-
-    // Обработка кликов по боковой навигации
-    document.querySelectorAll('.sidebar-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.dataset.page;
-            showPage(pageId);
-        });
-    });
-
-    // Обработка кликов по карточкам
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', function() {
-            const pageId = this.dataset.page;
-            showPage(pageId);
-        });
-    });
-
-    // Обработка hash в URL при загрузке
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(hash)) {
-        showPage(hash);
-    }
-
-    // Обработка кнопок назад/вперёд в браузере
-    window.addEventListener('popstate', function() {
-        const hash = window.location.hash.substring(1);
-        if (hash && document.getElementById(hash)) {
-            showPage(hash);
-        } else {
-            showPage('home');
+// Обновление интерфейса
+function updateUserInterface(user) {
+    const authButtons = document.getElementById('auth-buttons');
+    const userInfo = document.getElementById('user-info');
+    
+    if (user) {
+        // Пользователь вошёл
+        if (authButtons) authButtons.style.display = 'none';
+        if (userInfo) {
+            userInfo.style.display = 'block';
+            userInfo.innerHTML = `
+                <div class="user-avatar">
+                    <img src="${user.photoURL || 'https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&background=3182ce&color=fff'}" alt="Avatar">
+                </div>
+                <div class="user-details">
+                    <p class="user-name">${user.displayName || 'Пользователь'}</p>
+                    <p class="user-email">${user.email}</p>
+                    <button onclick="signOut()" class="btn-logout">Выйти</button>
+                </div>
+            `;
         }
-    });
+    } else {
+        // Пользователь вышел
+        if (authButtons) authButtons.style.display = 'block';
+        if (userInfo) userInfo.style.display = 'none';
+    }
 }
 
-function showPage(pageId) {
-    // Скрыть все секции
-    document.querySelectorAll('.article-section').forEach(section => {
-        section.classList.remove('active');
-    });
-
-    // Показать нужную
-    const targetSection = document.getElementById(pageId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-    }
-
-    // Обновить активные ссылки
-    document.querySelectorAll('.nav-link, .sidebar-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.dataset.page === pageId) {
-            link.classList.add('active');
-        }
-    });
-
-    // Прокрутка вверх
-    window.scrollTo(0, 0);
-
-    // Обновить URL
-    history.pushState(null, null, '#' + pageId);
+// Вход через Google
+function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    
+    auth.signInWithPopup(provider)
+        .then(result => {
+            console.log('✅ Успешный вход через Google:', result.user);
+            showNotification('Вы успешно вошли!', 'success');
+        })
+        .catch(error => {
+            console.error('❌ Ошибка входа через Google:', error);
+            showNotification('Ошибка входа: ' + error.message, 'error');
+        });
 }
 
-// === ЗАГРУЗКА ИНФОГРАФИКИ ===
-function loadInfographics() {
-    for (const [key, path] of Object.entries(CONFIG.infographics)) {
-        const img = document.getElementById(`${key}-image`);
-        const placeholder = document.getElementById(`${key}-placeholder`);
-        
-        if (img && placeholder) {
-            // Получаем URL из Firebase Storage
-            if (typeof storage !== 'undefined') {
-                storage.ref(path).getDownloadURL()
-                    .then(url => {
-                        img.src = url;
-                        img.onload = () => {
-                            img.classList.add('loaded');
-                            placeholder.style.display = 'none';
-                        };
-                    })
-                    .catch(error => {
-                        console.error(`Ошибка загрузки ${key}:`, error);
-                        placeholder.innerHTML = `
-                            <i class="fas fa-exclamation-circle"></i>
-                            <p>Изображение недоступно</p>
-                        `;
-                    });
+// Вход через Email/Password
+function signInWithEmail() {
+    const email = document.getElementById('email-input').value;
+    const password = document.getElementById('password-input').value;
+    
+    if (!email || !password) {
+        showNotification('Введите email и пароль', 'error');
+        return;
+    }
+    
+    auth.signInWithEmailAndPassword(email, password)
+        .then(result => {
+            console.log('✅ Успешный вход через Email:', result.user);
+            showNotification('Вы успешно вошли!', 'success');
+            document.getElementById('email-auth-section').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('❌ Ошибка входа:', error);
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                showNotification('Неверный email или пароль', 'error');
+            } else {
+                showNotification('Ошибка: ' + error.message, 'error');
             }
-        }
-    }
+        });
 }
 
-// === ЗАГРУЗКА ВИДЕО ===
-function loadVideos() {
-    const homeVideosContainer = document.getElementById('home-videos');
-    const allVideosContainer = document.getElementById('all-videos');
+// Регистрация через Email/Password
+function signUpWithEmail() {
+    const email = document.getElementById('email-input').value;
+    const password = document.getElementById('password-input').value;
+    const name = document.getElementById('name-input').value;
     
-    if (!homeVideosContainer && !allVideosContainer) return;
-
-    // Показываем индикатор загрузки
-    if (homeVideosContainer) {
-        homeVideosContainer.innerHTML = '<div class="video-loading"><i class="fas fa-spinner"></i><p>Загрузка видео...</p></div>';
+    if (!email || !password || !name) {
+        showNotification('Заполните все поля', 'error');
+        return;
     }
-    if (allVideosContainer) {
-        allVideosContainer.innerHTML = '<div class="video-loading"><i class="fas fa-spinner"></i><p>Загрузка видео...</p></div>';
+    
+    // Проверка пароля (минимум 6 символов)
+    if (password.length < 6) {
+        showNotification('Пароль должен быть не менее 6 символов', 'error');
+        return;
     }
-
-    // Загружаем первые 3 видео для главной
-    const homeVideos = CONFIG.videos.slice(0, 3);
-    if (homeVideosContainer) {
-        renderVideos(homeVideos, homeVideosContainer);
-    }
-
-    // Загружаем все видео для страницы видео
-    if (allVideosContainer) {
-        renderVideos(CONFIG.videos, allVideosContainer);
-    }
-
-    // Обновляем статистику
-    const statVideos = document.getElementById('stat-videos');
-    if (statVideos) {
-        statVideos.textContent = CONFIG.videos.length;
-    }
+    
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(result => {
+            console.log('✅ Успешная регистрация:', result.user);
+            // Обновляем профиль с именем
+            return result.user.updateProfile({
+                displayName: name
+            });
+        })
+        .then(() => {
+            showNotification('Регистрация успешна!', 'success');
+            document.getElementById('email-auth-section').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('❌ Ошибка регистрации:', error);
+            showNotification('Ошибка: ' + error.message, 'error');
+        });
 }
 
-function renderVideos(videos, container) {
-    container.innerHTML = '';
-
-    videos.forEach(video => {
-        const videoCard = document.createElement('div');
-        videoCard.className = 'video-card';
-        
-        // Получаем URL видео из Firebase Storage
-        if (typeof storage !== 'undefined') {
-            storage.ref(video.storagePath).getDownloadURL()
-                .then(url => {
-                    videoCard.innerHTML = `
-                        <div class="video-container">
-                            <video controls preload="metadata">
-                                <source src="${url}" type="video/mp4">
-                                Ваш браузер не поддерживает видео
-                            </video>
-                        </div>
-                        <div class="video-info">
-                            <span class="video-category">${video.category}</span>
-                            <h3 class="video-title">${video.title}</h3>
-                            <p class="video-description">${video.description}</p>
-                        </div>
-                    `;
-                })
-                .catch(error => {
-                    console.error(`Ошибка загрузки видео ${video.title}:`, error);
-                    videoCard.innerHTML = `
-                        <div class="video-container" style="display: flex; align-items: center; justify-content: center; color: white; background: #000;">
-                            <i class="fas fa-video-slash" style="font-size: 3rem;"></i>
-                        </div>
-                        <div class="video-info">
-                            <span class="video-category">${video.category}</span>
-                            <h3 class="video-title">${video.title}</h3>
-                            <p class="video-description">Видео недоступно</p>
-                        </div>
-                    `;
-                });
+// Вход через телефон
+function signInWithPhone() {
+    const phoneNumber = document.getElementById('phone-number').value;
+    
+    if (!phoneNumber) {
+        showNotification('Введите номер телефона', 'error');
+        return;
+    }
+    
+    // Проверка формата номера
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    if (!phoneRegex.test(phoneNumber.replace(/\s/g, ''))) {
+        showNotification('Введите корректный номер телефона', 'error');
+        return;
+    }
+    
+    // Отправка SMS кода
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal',
+        'callback': response => {
+            // reCAPTCHA решена
         }
+    });
+    
+    auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+        .then(confirmationResult => {
+            window.confirmationResult = confirmationResult;
+            document.getElementById('phone-verify-section').style.display = 'block';
+            showNotification('Код отправлен по SMS', 'success');
+        })
+        .catch(error => {
+            console.error('❌ Ошибка отправки SMS:', error);
+            showNotification('Ошибка: ' + error.message, 'error');
+        });
+}
+
+// Подтверждение SMS кода
+function verifyPhoneCode() {
+    const code = document.getElementById('verification-code').value;
+    
+    if (!code) {
+        showNotification('Введите код из SMS', 'error');
+        return;
+    }
+    
+    window.confirmationResult.confirm(code)
+        .then(result => {
+            console.log('✅ Успешный вход через телефон:', result.user);
+            showNotification('Вы успешно вошли!', 'success');
+            document.getElementById('phone-verify-section').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('❌ Ошибка подтверждения кода:', error);
+            showNotification('Неверный код', 'error');
+        });
+}
+
+// Выход
+function signOut() {
+    auth.signOut()
+        .then(() => {
+            console.log('✅ Успешный выход');
+            showNotification('Вы вышли из аккаунта', 'success');
+        })
+        .catch(error => {
+            console.error('❌ Ошибка выхода:', error);
+        });
+}
+
+// Отправка обращения (заявления)
+function submitAppeal() {
+    const name = document.getElementById('appeal-name').value;
+    const email = document.getElementById('appeal-email').value;
+    const phone = document.getElementById('appeal-phone').value;
+    const message = document.getElementById('appeal-message').value;
+    const category = document.getElementById('appeal-category').value;
+    
+    // Проверка заполнения
+    if (!name || !email || !message) {
+        showNotification('Заполните обязательные поля', 'error');
+        return;
+    }
+    
+    // Проверка авторизации
+    if (!auth.currentUser) {
+        showNotification('Пожалуйста, войдите в аккаунт для отправки обращения', 'error');
+        showPage('home');
+        return;
+    }
+    
+    // Сохранение в Firebase
+    db.collection('appeals').add({
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+        category: category,
+        userId: auth.currentUser.uid,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        status: 'new'
+    })
+    .then(docRef => {
+        console.log('✅ Обращение отправлено:', docRef.id);
+        showNotification('Ваше обращение успешно отправлено!', 'success');
         
-        container.appendChild(videoCard);
+        // Очистка формы
+        document.getElementById('appeal-form').reset();
+    })
+    .catch(error => {
+        console.error('❌ Ошибка отправки:', error);
+        showNotification('Ошибка отправки: ' + error.message, 'error');
     });
 }
 
-// === СТАТИСТИКА ===
-function updateStats() {
-    const statSections = document.getElementById('stat-sections');
-    const statVideos = document.getElementById('stat-videos');
-    const statInfographics = document.getElementById('stat-infographics');
+// Уведомления
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+        <span>${message}</span>
+    `;
     
-    if (statSections) statSections.textContent = '5';
-    if (statVideos) statVideos.textContent = CONFIG.videos.length;
-    if (statInfographics) statInfographics.textContent = Object.keys(CONFIG.infographics).length;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
-// === ГЛОБАЛЬНЫЕ ФУНКЦИИ ===
-window.showPage = showPage;
+// Глобальные функции
+window.signInWithGoogle = signInWithGoogle;
+window.signInWithEmail = signInWithEmail;
+window.signUpWithEmail = signUpWithEmail;
+window.signInWithPhone = signInWithPhone;
+window.verifyPhoneCode = verifyPhoneCode;
+window.signOut = signOut;
+window.submitAppeal = submitAppeal;
