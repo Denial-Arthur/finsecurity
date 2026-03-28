@@ -26,7 +26,7 @@
                 <li><a href="#" class="nav-link" data-page="phone">Телефонные мошенники</a></li>
                 <li><a href="#" class="nav-link" data-page="viruses">Вирусы</a></li>
                 <li><a href="#" class="nav-link" data-page="cards">Кража с карты</a></li>
-                <li><a href="#" class="nav-link" data-page="videos">Видеоматериалы</a></li>
+                <li><a href="#" class="nav-link" data-page="appeal">Обращение</a></li>
             </ul>
         </div>
     </nav>
@@ -42,7 +42,7 @@
                     <li><a href="#" class="sidebar-link" data-page="phone">📞 Телефонные мошенники</a></li>
                     <li><a href="#" class="sidebar-link" data-page="viruses">🦠 Вирусы и вредоносное ПО</a></li>
                     <li><a href="#" class="sidebar-link" data-page="cards">💳 Кража с карты</a></li>
-                    <li><a href="#" class="sidebar-link" data-page="videos">📺 Видеоматериалы</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="appeal">📝 Обратная связь</a></li>
                 </ul>
             </div>
 
@@ -51,7 +51,6 @@
                 <div class="sidebar-info">
                     <p><strong>📊 Статистика:</strong></p>
                     <p>• Разделов: <span id="stat-sections">5</span></p>
-                    <p>• Видеоматериалов: <span id="stat-videos">5</span></p>
                     <p>• Инфографик: <span id="stat-infographics">5</span></p>
                 </div>
             </div>
@@ -64,6 +63,49 @@
                     <p>МВД: <a href="tel:102">102</a></p>
                     <p><strong>🌐 Официальные ресурсы:</strong></p>
                     <p><a href="https://cbr.ru" target="_blank">cbr.ru</a> | <a href="https://fincult.info" target="_blank">fincult.info</a></p>
+                </div>
+            </div>
+
+            <!-- Авторизация -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Вход / Регистрация</div>
+                <div class="sidebar-info" id="auth-buttons">
+                    <button onclick="signInWithGoogle()" class="btn-auth btn-google">
+                        <i class="fab fa-google"></i> Войти через Google
+                    </button>
+                    
+                    <div class="auth-divider">или через Email</div>
+                    
+                    <div id="email-auth-section">
+                        <input type="text" id="name-input" placeholder="Ваше имя" class="input-auth">
+                        <input type="email" id="email-input" placeholder="Email" class="input-auth">
+                        <input type="password" id="password-input" placeholder="Пароль" class="input-auth">
+                        <button onclick="signInWithEmail()" class="btn-auth btn-email">
+                            <i class="fas fa-sign-in-alt"></i> Войти
+                        </button>
+                        <button onclick="signUpWithEmail()" class="btn-auth btn-register">
+                            <i class="fas fa-user-plus"></i> Регистрация
+                        </button>
+                    </div>
+                    
+                    <div class="auth-divider">или через телефон</div>
+                    
+                    <div class="phone-auth">
+                        <input type="tel" id="phone-number" placeholder="+7 999 123-45-67" class="input-phone">
+                        <button onclick="signInWithPhone()" class="btn-auth btn-phone">
+                            <i class="fas fa-phone"></i> Войти по телефону
+                        </button>
+                        <div id="recaptcha-container"></div>
+                        
+                        <div id="phone-verify-section" style="display: none; margin-top: 10px;">
+                            <input type="text" id="verification-code" placeholder="Код из SMS" class="input-code">
+                            <button onclick="verifyPhoneCode()" class="btn-auth btn-verify">Подтвердить</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-info" id="user-info" style="display: none;">
+                    <!-- Заполняется автоматически -->
                 </div>
             </div>
         </aside>
@@ -394,22 +436,77 @@
                 </div>
             </section>
 
-            <!-- ВИДЕО -->
-            <section id="videos" class="article-section">
+            <!-- ОБРАЩЕНИЕ -->
+            <section id="appeal" class="article-section">
                 <div class="page-header">
-                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Видеоматериалы</div>
-                    <h1 class="page-title">Видеоматериалы</h1>
-                    <p class="page-subtitle">Обучающие видеоролики о финансовом мошенничестве</p>
+                    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Главная</a> / Обращение</div>
+                    <h1 class="page-title">Обратная связь</h1>
+                    <p class="page-subtitle">Сообщить о мошенничестве или предложить улучшения</p>
                 </div>
 
                 <div class="article-content">
-                    <p>Официальные видеоматериалы от Банка России, Генеральной прокуратуры РФ и МВД России 
-                    о различных видах финансового мошенничества и способах защиты.</p>
-
                     <div class="info-box info-box-info">
-                        <strong><i class="fas fa-info-circle"></i> Примечание</strong>
-                        <p>Видео будут добавлены после загрузки на YouTube. Следите за обновлениями!</p>
+                        <strong><i class="fas fa-info-circle"></i> Официальное обращение</strong>
+                        <p>
+                            Если вы стали жертвой финансового мошенничества или хотите сообщить о подозрительной деятельности, 
+                            заполните форму ниже. Ваше обращение будет рассмотрено в течение 3 рабочих дней. 
+                            Мы направляем все заявления в соответствующие правоохранительные органы для дальнейшего разбирательства.
+                        </p>
                     </div>
+
+                    <div class="info-box info-box-warning">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Важно!</strong>
+                        <p>
+                            Для отправки обращения необходимо <strong>войти в аккаунт</strong>. 
+                            Это требуется для идентификации заявителя и обратной связи по вашему делу.
+                        </p>
+                    </div>
+
+                    <form id="appeal-form" class="appeal-form" onsubmit="event.preventDefault(); submitAppeal();">
+                        <div class="form-group">
+                            <label for="appeal-category">Категория обращения *</label>
+                            <select id="appeal-category" required>
+                                <option value="">Выберите категорию</option>
+                                <option value="phishing">Фишинг</option>
+                                <option value="online">Онлайн-мошенничество</option>
+                                <option value="phone">Телефонные мошенники</option>
+                                <option value="card">Кража с карты</option>
+                                <option value="other">Другое</option>
+                                <option value="suggestion">Предложение по улучшению портала</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appeal-name">Ваше ФИО *</label>
+                            <input type="text" id="appeal-name" placeholder="Иванов Иван Иванович" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appeal-email">Электронная почта *</label>
+                            <input type="email" id="appeal-email" placeholder="example@mail.ru" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appeal-phone">Номер телефона</label>
+                            <input type="tel" id="appeal-phone" placeholder="+7 999 123-45-67">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appeal-message">Описание ситуации *</label>
+                            <textarea id="appeal-message" rows="6" placeholder="Опишите подробно что произошло, когда, какие суммы задействованы, есть ли доказательства..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>Я подтверждаю достоверность указанной информации и согласен на обработку персональных данных</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Отправить обращение
+                        </button>
+                    </form>
                 </div>
             </section>
         </main>
@@ -451,10 +548,13 @@
         </div>
     </footer>
 
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="script.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
