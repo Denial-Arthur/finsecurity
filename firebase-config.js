@@ -14,5 +14,6 @@ firebase.initializeApp(firebaseConfig);
 // Инициализация сервисов
 const db = firebase.firestore();
 const storage = firebase.storage();
+const auth = firebase.auth();
 
 console.log('✅ Firebase инициализирован');
